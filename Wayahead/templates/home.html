@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block body %}
+<div class="d-flex justify-content-around row mx-4 my-5">
+    {% for topic in topics %}
+    <div class="col-sm-3 mb-4">
+        <div class="card ">
+            <h5 class="card-header text-light">{{topic.topic}}</h5>
+            <div class="card-body">
+                <p class="card-text text-white">{{topic.desc}}</p>
+                <a href= "/question/{{topic.topic}}" class="btn btn-primary">Explore</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock body %}

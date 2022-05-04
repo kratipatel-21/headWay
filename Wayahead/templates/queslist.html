@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block body %}
+<div class = "container my-4">
+{% for question in questions %}
+  <div class= "row">
+     <div class= "col-sm-3"> 
+      {% if question.difficulty == 1 %}
+      <h6 class = "text-center text-light">EASY</h6>
+      {% elif question.difficulty == 2 %}
+      <h6 class = "text-center text-light">MEDIUM</h6>
+      {% else %}
+      <h6 class = "text-center text-light">HARD</h6>
+      {% endif %}
+      <h6 class = "text-center text-muted">Point: {{question.point}}</h6>
+     </div>
+      <div class= "col-sm-9">
+      <h6 class = "text-center text-white">{{question.question}}</h6>
+      <form action="" class ="row g-3 align-items-center row-cols-lg-auto" method="post">
+      {% csrf_token %}
+      <div class="col-12">
+        <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+          <input type="radio" class="btn-check" name="status_{{question.id}}" id="btn1_{{question.id}}" autocomplete="off" checked>
+          <label class="btn btn-outline-primary" for="btn1_{{question.id}}">Not Seen</label>
+
+          <input type="radio" class="btn-check" name="status_{{question.id}}" value= "review" id="btn2_{{question.id}}" autocomplete="off" {% if question in review %}checked{% endif %}>
+          <label class="btn btn-outline-primary" for="btn2_{{question.id}}">Review</label>
+
+          <input type="radio" class="btn-check" name="status_{{question.id}}" value= "completed" id="btn3_{{question.id}}" autocomplete="off" {% if question in completed %}checked{% endif %}>
+          <label class="btn btn-outline-primary" for="btn3_{{question.id}}">Completed</label>
+        </div>
+        <input class ="btn btn-primary" type="submit" value="Submit">
+      </div>
+      </form>
+      </div> 
+  </div>
+    <hr class = "my-4 text-white"/>
+
+
+{% endfor %}</div>
+
+{% endblock body %}
+

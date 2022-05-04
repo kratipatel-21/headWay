@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block body %}
+<div class= "d-flex justify-content-center">
+<div class="col-sm-5  p-5 my-5">
+ <div class="card" style="width: 18rem;">
+  <img src="..." class="card-img-top" alt="...">
+  <div class="card-body text-white">
+  <h5 class="card-title"></h5><br>
+    <p class="card-text text-white">
+    <h2>{{user.username}}</h2>
+    <h4 class="text-secondary">something</h1>
+    <ul>
+      <li>Completed :{{completed}}</li>
+      <li class="text-danger">Review :{{review}}</li>
+      <li class="text-warning">Not Seen :{{not_seen}}</li>
+   </ul>
+    </p>
+    <a href="#" class="btn btn-success text-white">Total Points :{{points}} </a>
+  
+  </div>
+</div>
+{% endblock body %}
